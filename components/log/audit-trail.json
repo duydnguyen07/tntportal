@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_log_audit_trails",
+  "info": {
+    "name": "AuditTrail",
+    "icon": "book"
+  },
+  "options": {},
+  "attributes": {
+    "User": {
+      "type": "string",
+      "required": true
+    },
+    "TimeStamp": {
+      "type": "datetime",
+      "required": true
+    },
+    "PreviousValue": {
+      "type": "json",
+      "required": true
+    },
+    "NewValue": {
+      "type": "json",
+      "required": true
+    }
+  }
+}
