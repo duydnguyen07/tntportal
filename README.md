@@ -1,3 +1,2 @@
-# Strapi application
-
-A quick description of your strapi application
+# tntportal
+Portal for TNT Smog shop
