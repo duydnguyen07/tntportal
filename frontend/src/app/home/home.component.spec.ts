@@ -5,7 +5,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { CoreModule } from '@core';
 import { SharedModule } from '@shared';
-import { MaterialModule } from '@app/material.module';
 import { HomeComponent } from './home.component';
 import { QuoteService } from './quote.service';
 
@@ -16,14 +15,7 @@ describe('HomeComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        imports: [
-          BrowserAnimationsModule,
-          FlexLayoutModule,
-          MaterialModule,
-          CoreModule,
-          SharedModule,
-          HttpClientTestingModule,
-        ],
+        imports: [BrowserAnimationsModule, FlexLayoutModule, CoreModule, SharedModule, HttpClientTestingModule],
         declarations: [HomeComponent],
         providers: [QuoteService],
       }).compileComponents();

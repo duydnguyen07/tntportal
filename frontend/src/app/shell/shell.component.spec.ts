@@ -3,7 +3,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MaterialModule } from '@app/material.module';
 
 import { CoreModule } from '@core';
 import { AuthenticationService, CredentialsService } from '@app/auth';
@@ -27,7 +26,6 @@ describe('ShellComponent', () => {
           I18nModule,
           BrowserAnimationsModule,
           FlexLayoutModule,
-          MaterialModule,
           CoreModule,
         ],
         providers: [
