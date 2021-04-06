@@ -8,7 +8,7 @@
   "options": {
     "increments": true,
     "timestamps": true,
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "attributes": {
     "Certificate": {
@@ -55,6 +55,11 @@
     "AcknowledgementText": {
       "type": "text",
       "default": "I hereby authorize TNT Smog to perform a smog inspection/test. TNT Smog is authorized to operate the vehicle for inspection, testing, pick up & delivery at the vehicle owner's risk. TNT Smog will NOT be responsible for loss or damage to vehicle, or articles left in vehicle in case of fire, theft, accident or many other cause beyond our control. I understand TNT Smog does not do any repairs or adjustments and cannot diagnose or refer me to any special shop for repair. I also understand that I WILL HAVE TO PAY THE INSPECTION FEE WHETHER THE INSPECTION PASS OR NOT. The costs of performing inspections services has been explained to my satisfaction. If you agree, please enter your Initials, e.g. JD for John Doe."
+    },
+    "CertificatePasscode": {
+      "type": "string",
+      "private": true,
+      "unique": true
     }
   }
 }
