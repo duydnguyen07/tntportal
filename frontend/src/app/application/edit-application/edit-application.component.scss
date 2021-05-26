@@ -1,0 +1,13 @@
+@use "mixins" as mixins;
+
+.container {
+    @include mixins.form-container;
+}
+
+.error {
+    color: red;
+}
+
+:host { 
+    text-align: center;
+}

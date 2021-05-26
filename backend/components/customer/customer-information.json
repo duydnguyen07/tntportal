@@ -2,7 +2,8 @@
   "collectionName": "components_customer_customer_informations",
   "info": {
     "name": "Customer Information",
-    "icon": "grin"
+    "icon": "grin",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -31,16 +32,24 @@
       "type": "string",
       "required": true
     },
-    "Zipcode": {
-      "type": "string",
-      "required": true
-    },
-    "Phone": {
-      "type": "string",
-      "required": true
-    },
     "Email": {
       "type": "email"
+    },
+    "Phone": {
+      "type": "integer",
+      "required": true
+    },
+    "Zipcode": {
+      "type": "integer",
+      "required": true
+    },
+    "PreferredContactMethod": {
+      "type": "enumeration",
+      "enum": [
+        "Email",
+        "TextMessage"
+      ],
+      "required": true
     }
   }
 }

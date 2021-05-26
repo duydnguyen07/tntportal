@@ -26,6 +26,8 @@ export class AppComponent implements OnInit, OnDestroy {
     private i18nService: I18nService
   ) {}
 
+  //TODO: on visibility, check for token validity 
+
   ngOnInit() {
     // Setup logger
     if (environment.production) {

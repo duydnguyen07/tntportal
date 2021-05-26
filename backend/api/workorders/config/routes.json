@@ -25,6 +25,30 @@
       }
     },
     {
+      "method": "GET",
+      "path": "/workorders/certificate/download/:fileHash/:ext",
+      "handler": "workorders.downloadCertificate",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/workorders/certificate/downloadWithPasscode/:workorderID",
+      "handler": "workorders.downloadCertificateWithPasscode",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/workorders/passcode/:id",
+      "handler": "workorders.findOneWithPasscode",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "POST",
       "path": "/workorders",
       "handler": "workorders.create",

@@ -1,9 +1,24 @@
 import { Injectable } from '@angular/core';
 
 export interface Credentials {
-  // Customize received credentials here
-  username: string;
-  token: string;
+  jwt: string,
+  user: {
+    id: number,
+    username: string,
+    email: string,
+    confirmed: boolean,
+    blocked: boolean,
+    role: Role,
+    created_at: string,
+    updated_at: string
+  }
+}
+
+export interface Role {
+  id: number,
+  name: 'Technician',
+  description: string,
+  type: 'technician'
 }
 
 const credentialsKey = 'credentials';

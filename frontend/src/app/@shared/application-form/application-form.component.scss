@@ -1,0 +1,16 @@
+.contact-preference {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0;
+    align-items: center;
+}
+
+.contact-preference-option {
+    margin: .5rem;
+}
+
+@media only screen and (max-width: 600px) {
+    .form mat-form-field {
+        width: 100%;
+    }
+}

@@ -1,0 +1,34 @@
+<h2>Certificate</h2>
+<div class="download-upload-section">
+    <ng-container *ngIf="!disableUpload">
+        <button 
+            mat-button 
+            mat-button-primary 
+            color="primary"
+            [disabled]="isUploading"
+            (click)="uploadInput.click();"
+        >
+            <mat-icon aria-hidden="false" aria-label="upload icon">file_upload</mat-icon> New 
+        </button>
+        <app-loader *ngIf="isUploading" [isLoading]="isUploading"></app-loader>
+    </ng-container>
+
+    <button
+        *ngIf="!!uploadedFile && !!uploadedFile[0]"
+        mat-button 
+        mat-button-primary 
+        color="primary"
+        (click)="download(uploadedFile[0])"
+    >
+        <mat-icon aria-hidden="false" aria-label="View file">open_in_new</mat-icon> {{uploadedFile[0]?.name}} 
+    </button>
+    <app-loader *ngIf="isGeneratingLink" [isLoading]="isGeneratingLink"></app-loader>
+</div>
+
+<input 
+    #uploadInput 
+    class="upload-input" 
+    type="file" accept="application/pdf" 
+    (click)="uploadInput.value = null"
+    (change)="uploadFile($event)"
+/>

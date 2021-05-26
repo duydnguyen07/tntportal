@@ -59,7 +59,8 @@
     "CertificatePasscode": {
       "type": "string",
       "private": true,
-      "unique": true
+      "unique": true,
+      "required": true
     }
   }
 }

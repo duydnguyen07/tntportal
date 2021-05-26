@@ -1,0 +1,9 @@
+@use "mixins" as mixins;
+
+.container {
+    @include mixins.form-container;
+}
+
+.actions {
+    display: flex;
+}

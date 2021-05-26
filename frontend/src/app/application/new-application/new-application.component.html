@@ -1,0 +1,10 @@
+<div class="container">
+    <div>
+        <h1>New Application</h1>
+
+        <app-application-form
+            [date]="now"
+            (formSubmit)="createNewEntry($event)"
+        ></app-application-form>
+    </div>
+</div>

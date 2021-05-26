@@ -2,3 +2,17 @@
   text-align: center;
   padding: 1rem;
 }
+
+.table-block {
+  display: grid;
+  max-width: 60rem;
+  margin: auto;
+
+  td {
+    text-align: left;
+  }
+
+  .action-cell {
+    padding: 1rem;
+  }
+}

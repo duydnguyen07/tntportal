@@ -2,32 +2,33 @@
   "collectionName": "components_vehicle_vehicle_informations",
   "info": {
     "name": "VehicleInformation",
-    "icon": "car-side"
+    "icon": "car-side",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "Year": {
       "type": "integer",
-      "required": true
+      "required": false
     },
     "Make": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "Model": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "License": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "Mileage": {
       "type": "biginteger"
     },
     "VIN": {
       "type": "string",
-      "required": true
+      "required": false
     }
   }
 }

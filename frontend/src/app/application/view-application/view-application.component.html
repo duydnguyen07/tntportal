@@ -1,0 +1,51 @@
+<div class="container">
+    <div>
+        <h1>My Application</h1>
+        <ng-container *ngIf="!workorder">
+            <form *ngIf="!passcode" (submit)="submitPasscodeAndFetch()">
+                <mat-form-field  appearance="outline">
+                    <mat-label>Enter Your Passcode</mat-label>
+                    <input matInput placeholder="e.g. abc123" required [formControl]="passcordControl">
+                </mat-form-field>
+                <br>
+                <button mat-raised-button [disabled]="isFetching" color="primary" type="submit">Submit</button>
+            </form>
+
+            <app-loader [isLoading]="isFetching" [size]="2"></app-loader>
+
+            <ng-container *ngIf="!!errorMessage">
+                <p class="error">{{errorMessage}}</p>
+                <button mat-stroked-button color="primary" [routerLink]="'/'">Return Home</button>
+            </ng-container>
+        </ng-container>
+        <ng-container *ngIf="!!workorder">
+            <app-application-form
+              [passcode]="passcode || passcordControl.value"
+              [id]="workorder.id"
+              [firstName]="workorder.firstName"
+              [lastName]="workorder.lastName"
+              [address]="workorder.address"
+              [city]="workorder.city"
+              [state]="workorder.state"
+              [zipcode]="workorder.zipcode"
+              [formState]="workorder.formState"
+              [phone]="workorder.phone"
+              [email]="workorder.email"
+              [date]="workorder.date"
+              [year]="workorder.year"
+              [make]="workorder.make"
+              [model]="workorder.model"
+              [license]="workorder.license"
+              [mileage]="workorder.mileage"
+              [vin]="workorder.vin"
+              [price]="workorder.price"
+              [acknowledgementText]="workorder.acknowledgementText"
+              [initials]="workorder.initials"
+              [readonly]="true"
+              [certificate]="workorder.certificate"
+          ></app-application-form>
+        </ng-container>
+        
+        
+    </div>
+</div>

@@ -1,11 +1,13 @@
+import { CredentialsService } from '@app/auth/credentials.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { finalize } from 'rxjs/operators';
+import { catchError, finalize } from 'rxjs/operators';
 
 import { environment } from '@env/environment';
 import { Logger, UntilDestroy, untilDestroyed } from '@core';
-import { AuthenticationService } from './authentication.service';
+import { AuthenticationService } from '../authentication.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 const log = new Logger('Login');
 
@@ -25,16 +27,31 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private credentialsService: CredentialsService
   ) {
     this.createForm();
   }
 
   ngOnInit() {}
 
+  // .pipe(
+  //   map((cred: Credentials) => {
+  //     this.credentialsService.setCredentials(cred, context.remember);
+  //     return cred
+  //   }),
+
+  // )
+
   login() {
     this.isLoading = true;
-    const login$ = this.authenticationService.login(this.loginForm.value);
+    const loginFormValue: {
+      username: string,
+      password: string,
+      remember: boolean,
+    } = this.loginForm.value;
+
+    const login$ = this.authenticationService.login(loginFormValue);
     login$
       .pipe(
         finalize(() => {
@@ -45,12 +62,13 @@ export class LoginComponent implements OnInit {
       )
       .subscribe(
         (credentials) => {
-          log.debug(`${credentials.username} successfully logged in`);
+          log.debug(`${credentials.user.username} successfully logged in`);
+          this.credentialsService.setCredentials(credentials, loginFormValue.remember);
           this.router.navigate([this.route.snapshot.queryParams.redirect || '/'], { replaceUrl: true });
         },
-        (error) => {
+        (error: HttpErrorResponse) => {
           log.debug(`Login error: ${error}`);
-          this.error = error;
+          this.error = error.message;
         }
       );
   }
