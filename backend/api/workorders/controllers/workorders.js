@@ -7,7 +7,8 @@ const ERROR_CODES = {
     ID_INVALID: 'ID_INVALID',
     PASSCODE_INVALID: 'PASSCODE_INVALID',
     DOWNLOAD_URL_GENERATION_FAILED: 'DOWNLOAD_URL_GENERATION_FAILED',
-    CERTIFICATE_NOT_FOUND: 'CERTIFICATE_NOT_FOUND'
+    CERTIFICATE_NOT_FOUND: 'CERTIFICATE_NOT_FOUND',
+    UNABLE_TO_SEND_NOTIFICATION_INVALID_EMAIL: 'UNABLE_TO_SEND_NOTIFICATION_INVALID_EMAIL'
 }
 
 function getErrorObj(code) {
@@ -65,6 +66,36 @@ module.exports = {
 
             return getErrorObj(ERROR_CODES.PASSCODE_INVALID)
         }
+    },
+
+    async downloadCertificateFile(ctx) {
+        const { fileHash, ext } = ctx.params;
+
+        const client = new S3Client({ 
+            region: process.env.AWS_REGION,
+            credentials: {
+                accessKeyId: process.env.AWS_ACCESS_KEY,
+                secretAccessKey: process.env.AWS_ACCESS_SECRET,
+            }
+        });
+        const Key = `${fileHash}${ext}`
+
+        const command = new GetObjectCommand({
+            Bucket: process.env.AWS_BUCKET_NAME, Key
+        });
+        let output = await client.send(command);
+
+        ctx.status = output.$metadata.httpStatusCode;
+
+        ctx.response.set({
+            'Content-Disposition': 'attachment; filename=' + Key,
+            "Content-Type": output.ContentType,
+            'Content-Length': output.ContentLength
+        })
+
+        ctx.body = output.Body;
+
+        //TODO: use this to retrieve back a file in the frontend
     },
 
     async downloadCertificate(ctx) {

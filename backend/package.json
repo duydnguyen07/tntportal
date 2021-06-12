@@ -6,6 +6,8 @@
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",
+    "start:dev": "ENV_PATH=/Users/duy/dev/tntportal/backend/.env strapi start",
+    "develop:watch": "strapi develop --watch-admin",
     "build": "strapi build",
     "strapi": "strapi"
   },
