@@ -26,6 +26,14 @@
     },
     {
       "method": "GET",
+      "path": "/workorders/certificate/file/:fileHash/:ext",
+      "handler": "workorders.downloadCertificateFile",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/workorders/certificate/download/:fileHash/:ext",
       "handler": "workorders.downloadCertificate",
       "config": {

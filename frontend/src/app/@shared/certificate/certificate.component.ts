@@ -90,7 +90,7 @@ export class CertificateComponent implements OnInit {
       })
     ).subscribe(
       (fileUrl) => {
-        window.open(fileUrl.signed_url, '_blank');
+        window.open(fileUrl.signed_url, '_blank'); // TODO: open in new tab doesn't work in safari
       }, (err: HttpErrorResponse) => {
         this.snackBar.open('Failed to get file, please try again later.', 'x')
       })

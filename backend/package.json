@@ -5,6 +5,7 @@
   "description": "A Strapi application",
   "scripts": {
     "develop": "strapi develop",
+    "develop:watch": "strapi develop --watch-admin",
     "start": "ENV_PATH=/Users/duy/dev/tntportal/backend/.env strapi start",
     "build": "strapi build",
     "strapi": "strapi"
