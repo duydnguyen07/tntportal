@@ -89,11 +89,11 @@ export class ApplicationService {
         PreferredContactMethod: controls.preferredContact,
       },
       VehicleInformation: {
-        Year: controls.year,
+        Year: controls.year || null,
         Make: controls.make,
         Model: controls.model,
         License: controls.license,
-        Mileage: controls.mileage,
+        Mileage: controls.mileage || null,
         VIN: controls.vin
       },
       Certificate: controls.certificate

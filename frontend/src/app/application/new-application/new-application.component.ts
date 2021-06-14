@@ -44,9 +44,8 @@ export class NewApplicationComponent implements OnInit {
     const passcode: string = this.uppercase.transform(this.getRandomePasscode());
     const data: Controls = {
       ...controls,
-      state: FormState.New
+      formState: FormState.New
     }
-
 
     this.applicationService.create(data, passcode).pipe(
       first(),

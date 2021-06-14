@@ -171,6 +171,9 @@ export class ApplicationFormComponent implements OnInit, AfterViewInit {
   }
 
   @Input()
+  isNewForm: boolean;
+
+  @Input()
   set readonly(val: boolean) {
     if(!!val) {
       for( const control of Object.values(this.formGroup.controls) ) {

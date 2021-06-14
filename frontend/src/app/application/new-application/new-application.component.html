@@ -3,6 +3,7 @@
         <h1>New Application</h1>
 
         <app-application-form
+            [isNewForm]="true"
             [date]="now"
             (formSubmit)="createNewEntry($event)"
         ></app-application-form>

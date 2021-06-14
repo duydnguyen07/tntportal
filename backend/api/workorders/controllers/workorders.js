@@ -37,11 +37,37 @@ async function getSignedCertificateUrl(fileHash, ext) {
  * to customize this controller
  */
 module.exports = {
-    //TODO: when update status, check if it goes to complete
     //TODO: validate phone number when user type in
     //TODO: allow manual trigger of sms
     //TODO: allow for upload of pdf to workorder
 
+
+    async create(ctx) {
+      let entity;
+      if (ctx.is('multipart')) {
+        const { data, files } = parseMultipartData(ctx);
+        entity = await strapi.services.workorders.create(data, { files });
+      } else {
+        entity = await strapi.services.workorders.create(ctx.request.body);
+      }
+
+      if(entity.CustomerInformation.PreferredContactMethod === 'TextMessage') {
+          //TODO: send text message
+          console.log('sending text')
+      } else {
+          if(entity.CustomerInformation.Email) {
+              
+          } else {
+            return getErrorObj(ERROR_CODES.PASSCODE_INVALID)
+          }
+          //TODO: check if user has an email and send an email notification instead.
+          //TDOO: create a manual way for technician to send notification in case contact info was wrong the first time.
+          console.log('sending email')
+
+      }
+
+      return sanitizeEntity(entity, { model: strapi.models.workorders });
+    },
 
     /**
      * Retrieve a record.

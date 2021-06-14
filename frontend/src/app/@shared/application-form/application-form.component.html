@@ -97,6 +97,7 @@
     <br/>
     
     <app-certificate 
+        *ngIf="!isNewForm"
         [passcode]="passcode"
         [workorderId]="workorderId"
         [disableUpload]="isReadonly"
